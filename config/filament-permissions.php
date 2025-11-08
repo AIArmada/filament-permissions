@@ -11,6 +11,12 @@ return [
     'panel_guard_map' => [
         // 'admin-panel' => 'admin',
     ],
+    // Panel-specific role access rules.
+    // Each panel id may list roles permitted to access it. If empty, falls back to guard only.
+    'panel_roles' => [
+        'admin' => ['Super Admin', 'Admin'],
+        'member' => ['Super Admin', 'Member'],
+    ],
     'super_admin_role' => 'Super Admin',
     'enable_user_resource' => true,
     'navigation' => [
@@ -27,7 +33,7 @@ return [
         // 'permissions' => [ 'users.viewAny','users.view','users.create','users.update','users.delete' ],
     ],
     'permission_naming' => [
-        'ability_to_permission' => \AIArmada\FilamentPermissions\Support\DefaultAbilityToPermissionMapper::class,
+        'ability_to_permission' => AIArmada\FilamentPermissions\Support\DefaultAbilityToPermissionMapper::class,
     ],
     'features' => [
         'doctor' => true,
@@ -37,5 +43,6 @@ return [
         'diff_widget' => true,
         'export_import' => true,
         'auto_panel_middleware' => true,
+        'panel_role_authorization' => true,
     ],
 ];
